@@ -2,6 +2,7 @@
 
 namespace Class;
 
+use Class\Exceptions\UserExceptions;
 use Class\Exceptions\UserIsBanException;
 use Exception;
 use Class\User;
@@ -17,11 +18,12 @@ class Login
     public function login(): bool
     {
         if (!$this->user->isVerified()) {
-            throw new UserNotVerifiedException();
+            // throw new UserNotVerifiedException();
+            throw UserExceptions::notVerified();
         }
-        if ($this->user->isBan()) {
-            throw new UserIsBanException();
-        }
+        // if ($this->user->isBan()) {
+        //     throw new UserIsBanException();
+        // }
         return true;
     }
 }

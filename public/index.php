@@ -1,9 +1,8 @@
 <?php
 
-use Class\Exceptions\UserIsBanException;
-use Class\Exceptions\UserNotVerifiedException;
-use Class\Login;
 use Class\User;
+use Class\Login;
+use Class\Exceptions\UserExceptions;
 
 require "../vendor/autoload.php";
 
@@ -12,8 +11,9 @@ $login = new Login($user);
 
 try {
     $login->login();
-} catch (\Exception $e) {
+} catch (UserExceptions $e) {
     echo $e->getMessage() . ' dans le fichier ' . $e->getFile() . ' sur la ligne ' . $e->getLine();
-} finally {
-    echo ' Quelque soit la situation, affiche toi !';
-}
+} 
+// finally {
+//     echo ' Quelque soit la situation, affiche toi !';
+// }
